@@ -15,7 +15,8 @@ EX_GRAPH2 = {0: set([1, 4, 5]), 1: set([2, 6]), 2: set([3, 7]), 3: set([7]), 4: 
 
 
 def make_complete_graph(num_nodes):
-    """ Given the number of nodes num_nodes 
+    """ 
+        Given the number of nodes num_nodes 
         returns a dictionary corresponding to a complete directed graph 
         with the specified number of nodes.
     """
@@ -39,10 +40,11 @@ def make_complete_graph(num_nodes):
 
 
 def compute_in_degrees(digraph):
-    """ Takes a directed graph digraph (represented as a dictionary) and 
+    """ 
+        Takes a directed graph digraph (as a dictionary) and 
         computes the in-degrees for the nodes in the graph. 
         Returns a dictionary with the same set of keys (nodes) as digraph 
-        whose corresponding values are the number of edges whose head matches a particular node. 
+        whose corresponding values are the number of edges whose head matches a particular node.
     """
     in_degrees = {}
     all_edges = digraph.values()
@@ -61,12 +63,13 @@ def compute_in_degrees(digraph):
 
 def in_degree_distribution(digraph):
     """
-        This function takes the directed graph that represented as a dictionary.
-        And Returns the unnormalized distribution of the in-degrees of the graph.
+        Takes the directed graph that represented as a dictionary. 
+        Returns the unnormalized distribution of the in-degrees of the graph.
     """
-    digraph = compute_in_degrees(digraph)
+    nodes_in_degrees = compute_in_degrees(digraph)
     distribution = {}
-    for count in digraph.values():
+    in_degrees = nodes_in_degrees.values()
+    for count in in_degrees:
         if count not in distribution.keys():
             distribution[count] = 0
         distribution[count] += 1
